@@ -50,3 +50,17 @@ class ReadFile(object):
             return self._data
         except CouldNotGetDataError as ex:
             print(ex)
+
+
+            # TODO
+
+            # verify_email = 'info@emailhippo.com'
+            # email_match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', verify_email)
+            #
+            # if email_match is None:
+            #     print('There is a syntax error in the email address')
+            #     raise InvalidEmailError('There is a syntax error in the email address')
+            # else:
+            #     print('Email Address is correct')
+
+            # TODO
