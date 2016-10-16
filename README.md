@@ -35,7 +35,7 @@ For this example I have utilised ...
 
 ### Instructions:
 
-- TODO...
+- python3 ../example/main.py
 
 ### Workflow:
 
