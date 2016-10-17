@@ -4,8 +4,10 @@ Transform: Check and Standarise the format of the data extracted from CSV file
 """
 
 from users.exceptions import *
+from users.formats import name_format, email_format
 import csv
 import os
+import re
 
 csv.register_dialect(
     'CSV_reader',
@@ -36,12 +38,17 @@ class ReadFile(object):
 
     def format_data(self, rows):
         for row in rows:
+            name = row[0].title()
+            surname = row[1].title()
+            email = row[2].lower()
+            validate_email = re.match(email_format, email)
             try:
-                self._data.append(''.join(c for c in
-                                          row[0].title() + "\t \t" +
-                                          row[1].title() + "\t \t" +
-                                          row[2].lower()
-                                          if c not in '/><=+-?!#"  "$%^&*""()" "_+:;'))
+                self._data.append(
+                    ''.join(c for c in name + "\t \t" + surname + "\t \t" + email if c not in name_format))
+
+                # if validate_email is None:
+                #     raise InvalidEmailError()
+
             except CouldNotFormatDataError as ex:
                 print(ex)
 
@@ -50,17 +57,3 @@ class ReadFile(object):
             return self._data
         except CouldNotGetDataError as ex:
             print(ex)
-
-
-            # TODO
-
-            # verify_email = 'info@emailhippo.com'
-            # email_match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', verify_email)
-            #
-            # if email_match is None:
-            #     print('There is a syntax error in the email address')
-            #     raise InvalidEmailError('There is a syntax error in the email address')
-            # else:
-            #     print('Email Address is correct')
-
-            # TODO
