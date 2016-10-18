@@ -8,7 +8,6 @@ from users.formatter import name_format, Email
 
 import csv
 import os
-import re
 
 csv.register_dialect(
     'CSV_reader',
@@ -54,6 +53,7 @@ class ReadFile(object):
 
             except CouldNotFormatDataError as ex:
                 print(ex)
+
     @property
     def data(self):
         try:

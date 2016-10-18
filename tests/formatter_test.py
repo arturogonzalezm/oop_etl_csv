@@ -2,54 +2,56 @@ import unittest
 from nose_parameterized import parameterized
 
 from users.formatter import Email
+
+
 class TestEmail(unittest.TestCase):
     @parameterized.expand([
         (
-            'churq@hotmail.com',
-            False
+                'churq@mail.com',
+                False
         ),
         (
-            '@hotmail.com',
-            True
+                '@mail.com',
+                True
         ),
         (
-            '.@gmail.com',
-            True
+                '.@gmail.com',
+                True
         ),
         (
-            '_churq@hotmail.com',
-            True
+                '_churq@mail.com',
+                True
         ),
         (
-            'churq_@hotmail.com',
-            True
+                'churq_@mail.com',
+                True
         ),
         (
-            'churq.@hotmail.com',
-            True
+                'churq.@mail.com',
+                True
         ),
         (
-            'churq@hotmail.',
-            True
+                'churq@mail.',
+                True
         ),
         (
-            'churq@hotmail.c',
-            True
+                'churq@mail.c',
+                True
         ),
         (
-            'churq@hotmail.cn',
-            False
+                'churq@mail.cn',
+                False
         ),
         (
-            'churqhotmail.com',
-            True
+                'churqmail.com',
+                True
         ),
         (
-            'churq@hotmailcom',
-            True
+                'churq@mailcom',
+                True
         )
 
     ])
-    def test_varify_email(self, email_address, result):
+    def test_verify_email(self, email_address, result):
         email = Email()
         self.assertEqual(email.validate_email(email_address), result)
