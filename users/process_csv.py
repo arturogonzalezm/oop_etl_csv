@@ -4,7 +4,7 @@ Transform: Check and Standarise the format of the data extracted from CSV file
 """
 
 from users.exceptions import *
-from users.formatter import name_format, validate_email, email_f
+from users.formatter import name_format, Email
 
 import csv
 import os
@@ -49,7 +49,7 @@ class ReadFile(object):
 
                 if email is not None:
                     self._data.append(''.join(c for c in email if c not in name_format))
-                    for i in filter(validate_email, [email]):
+                    for i in filter(Email.validate_email, [email]):
                         print("Invalid email:", i)
 
             except CouldNotFormatDataError as ex:
