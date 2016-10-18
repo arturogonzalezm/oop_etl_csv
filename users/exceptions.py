@@ -11,7 +11,7 @@ class DuplicateSurnameError(Exception):
     pass
 
 
-class InvalidEmailError(Exception):
+class IsNotLegalEmailFormatError(Exception):
     pass
 
 
