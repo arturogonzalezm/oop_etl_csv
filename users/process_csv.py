@@ -4,8 +4,11 @@ Transform: Check and Standarise the format of the data extracted from CSV file
 """
 
 from users.exceptions import *
+from users.formatter import name_format, Email
+
 import csv
 import os
+import re
 
 csv.register_dialect(
     'CSV_reader',
@@ -20,15 +23,16 @@ csv.register_dialect(
 class ReadFile(object):
     def __init__(self, filename):
         self._data = []
-        self.localdir = '../data/'
+        self.local_dir = '../data/'
         self.filename = filename
-        self.filepath = os.path.join(self.localdir, self.filename)
+        self.file_path = os.path.join(self.local_dir, self.filename)
         self.read_data()
 
     def read_data(self):
         try:
-            csv_in = open(self.filepath, 'rU')
+            csv_in = open(self.file_path, 'rU')
             rows = csv.reader(csv_in, dialect='CSV_reader')
+            next(rows, None)
             self.format_data(rows)
             csv_in.close()
         except CouldNotReadFileError as ex:
@@ -36,31 +40,23 @@ class ReadFile(object):
 
     def format_data(self, rows):
         for row in rows:
+            name = row[0].title()
+            surname = row[1].title()
+            email = row[2].lower()
             try:
-                self._data.append(''.join(c for c in
-                                          row[0].title() + "\t \t" +
-                                          row[1].title() + "\t \t" +
-                                          row[2].lower()
-                                          if c not in '/><=+-?!#"  "$%^&*""()" "_+:;'))
+                self._data.append(''.join(c for c in name if c not in name_format))
+                self._data.append(''.join(c for c in surname if c not in name_format))
+
+                if email is not None:
+                    self._data.append(''.join(c for c in email if c not in name_format))
+                    for i in filter(Email.validate_email, [email]):
+                        print("Invalid email:", i)
+
             except CouldNotFormatDataError as ex:
                 print(ex)
-
-    def get_data(self):
+    @property
+    def data(self):
         try:
             return self._data
         except CouldNotGetDataError as ex:
             print(ex)
-
-
-            # TODO
-
-            # verify_email = 'info@emailhippo.com'
-            # email_match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', verify_email)
-            #
-            # if email_match is None:
-            #     print('There is a syntax error in the email address')
-            #     raise InvalidEmailError('There is a syntax error in the email address')
-            # else:
-            #     print('Email Address is correct')
-
-            # TODO
