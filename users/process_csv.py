@@ -44,8 +44,8 @@ class ReadFile(object):
                                           if c not in '/><=+-?!#"  "$%^&*""()" "_+:;'))
             except CouldNotFormatDataError as ex:
                 print(ex)
-
-    def get_data(self):
+    @property
+    def data(self):
         try:
             return self._data
         except CouldNotGetDataError as ex:
