@@ -28,19 +28,19 @@ In this example OOP has been implemented.
 
 ### Script Command Line Directives:
 
-- [ ] -- le "csv_filename" – this is the name of the CSV to be parsed
+- -- le "csv_filename" – this is the name of the CSV to be parsed
 
-- [ ] --create_table – this will cause the MySQL users table to be built (and no further action will be taken)
+- --create_table – this will cause the MySQL users table to be built (and no further action will be taken)
 
-- [ ] --dry_run – this will be used with the -- le directive in the instance that we want to run the script but not insert into the DB. All other functions will be executed, but the database won't be altered.
+- --dry_run – this will be used with the -- le directive in the instance that we want to run the script but not insert into the DB. All other functions will be executed, but the database won't be altered.
 
-- [ ] -u – MySQL username
+- -u – MySQL username
 
-- [ ] -p – MySQL password
+- -p – MySQL password
 
-- [ ] -h – MySQL host
+- -h – MySQL host
 
-- [ ] --help – which will output the above list of directives with details.
+- --help – which will output the above list of directives with details.
 
 ### Technical Notes:
 
