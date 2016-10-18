@@ -60,3 +60,7 @@ class ReadFile(object):
             return self._data
         except CouldNotGetDataError as ex:
             print(ex)
+
+    @data.setter
+    def data(self, value):
+        self._data = value
