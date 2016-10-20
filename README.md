@@ -26,7 +26,7 @@ In this example OOP has been implemented.
 9. In the instance that an email is invalid, no insert should be made to database and error message reported to STDOUT.
 
 
-### Script Command Line Directives:
+### Script Command Line Directives: TODO ...
 
 - --file "csv_filename" – this is the name of the CSV to be parsed
 

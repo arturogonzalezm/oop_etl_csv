@@ -1,5 +1,5 @@
 """
-Load: Create table 'users' and load data into PostgreSQL.
+Load: Create table 'users' and load data into table 'users' in PostgreSQL.
 """
 
 import psycopg2
@@ -155,5 +155,5 @@ def insert_user_list(user_list):
 if __name__ == '__main__':
     connect()
     create_tables()
-    insert_user()
-    insert_user_list()
+#     insert_user()
+#     insert_user_list()
