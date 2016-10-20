@@ -19,7 +19,7 @@ In this example OOP has been implemented.
 
 6. The script should validate the email address to make sure that it is valid (valid means that it is a legal email format e.g. “xxxx@asdf@asdf is not a legal format). In the instance that an email is invalid an error message will be reported to STDOUT
 
-7. Script will iterate through the CSV rows and insert each record into a dedicated MySQL database into the table “users”
+7. Script will iterate through the CSV rows and insert each record into a dedicated PostgreSQL database into the table “users”
 
 8. The users database table will need to be created/rebuilt as part of the Python script. This will be needed as a Command Line directive below.
 
@@ -30,15 +30,15 @@ In this example OOP has been implemented.
 
 - --file "csv_filename" – this is the name of the CSV to be parsed
 
-- --create_table – this will cause the MySQL users table to be built (and no further action will be taken)
+- --create_table – this will cause the PostgreSQL users table to be built (and no further action will be taken)
 
 - --dry_run – this will be used with the --file directive in the instance that we want to run the script but not insert into the DB. All other functions will be executed, but the database won't be altered.
 
-- -u – MySQL username
+- -u – PostgreSQL username
 
-- -p – MySQL password
+- -p – PostgreSQL password
 
-- -h – MySQL host
+- -h – PostgreSQL host
 
 - --help – which will output the above list of directives with details.
 
