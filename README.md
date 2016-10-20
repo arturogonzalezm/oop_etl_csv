@@ -46,7 +46,7 @@ In this example OOP has been implemented.
 
 For this example I have utilised ...
 
-- Language: Python 3.5
+- Language: Python 3.5 and SQL (postgreSQL).
 
 - Operative System: macOS sierra, also it works for any Linux/Unix based
   distribution.
@@ -55,6 +55,8 @@ For this example I have utilised ...
   setup files.
 
 - PyCharm IDE
+
+- pgAdmin 4 IDE
 
 ### Workflow:
 
