@@ -21,18 +21,18 @@ In this example OOP has been implemented.
 
 7. Script will iterate through the CSV rows and insert each record into a dedicated MySQL database into the table “users”
 
-8. The users database table will need to be created/rebuilt as part of the Python script. This will be de ned as a Command Line directive below.
+8. The users database table will need to be created/rebuilt as part of the Python script. This will be needed as a Command Line directive below.
 
 9. In the instance that an email is invalid, no insert should be made to database and error message reported to STDOUT.
 
 
 ### Script Command Line Directives:
 
-- -- le "csv_filename" – this is the name of the CSV to be parsed
+- --file "csv_filename" – this is the name of the CSV to be parsed
 
 - --create_table – this will cause the MySQL users table to be built (and no further action will be taken)
 
-- --dry_run – this will be used with the -- le directive in the instance that we want to run the script but not insert into the DB. All other functions will be executed, but the database won't be altered.
+- --dry_run – this will be used with the --file directive in the instance that we want to run the script but not insert into the DB. All other functions will be executed, but the database won't be altered.
 
 - -u – MySQL username
 

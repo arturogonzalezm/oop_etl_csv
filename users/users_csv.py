@@ -1,13 +1,16 @@
 """
-Extract : Read data from CSV file
+Extract:   Read data from CSV file
 Transform: Check and Standarise the format of the data extracted from CSV file
 """
 
 from users.exceptions import *
 from users.formatter import name_format, Email
+from users.config import *
+from users.users_load import *
 
 import csv
 import os
+import psycopg2
 
 csv.register_dialect(
     'CSV_reader',
@@ -46,11 +49,10 @@ class ReadFile(object):
                 self._data.append(''.join(c for c in name if c not in name_format))
                 self._data.append(''.join(c for c in surname if c not in name_format))
 
-                if email is not None:
-                    self._data.append(''.join(c for c in email if c not in name_format))
-                    for i in filter(Email.validate_email, [email]):
-                        print("Invalid email:", i)
-
+                if email:
+                    self._data.append(''.join([c for c in email if c not in name_format]))
+                    if Email.validate_email(email):
+                        print("Invalid email %s" % email)
             except CouldNotFormatDataError as ex:
                 print(ex)
 

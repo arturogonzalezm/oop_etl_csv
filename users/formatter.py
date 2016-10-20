@@ -10,7 +10,7 @@ name_format = '/><=+-?!#"  "$%^&*""()" "_+:;'
 
 # Validate email format
 class Email(object):
-    email_format = r'[a-z][a-z_\.0-9]{1,}[a-z0-9]@[a-z\.]+\.[a-z]{2,}$'
+    email_format = r'[\.\w]{2,}[@]\w+[.]\w+'
 
     @classmethod
     def validate_email(cls, address):
