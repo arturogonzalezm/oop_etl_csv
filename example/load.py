@@ -11,7 +11,7 @@ cursor = conn.cursor()
 query = 'INSERT INTO users (name, surname, email) VALUES (%s, %s, %s)'
 
 
-csv_data = csv.reader(open('../data/users.csv'))
+csv_data = csv.reader(open('../data/src.csv'))
 
 
 for row in csv_data:

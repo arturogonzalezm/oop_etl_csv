@@ -3,7 +3,7 @@ Load: Create table 'users' and load data into table 'users' in PostgreSQL.
 """
 
 import psycopg2
-from users.config import config
+from src.config import config
 
 
 def connect():
@@ -42,7 +42,7 @@ def create_tables():
     """ create tables in the PostgreSQL database"""
     commands = (
         """
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS src (
             user_id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             surname VARCHAR(255) NOT NULL,
@@ -70,7 +70,7 @@ def create_tables():
                 part_id INTEGER NOT NULL,
                 PRIMARY KEY (user_id , part_id),
                 FOREIGN KEY (user_id)
-                    REFERENCES users (user_id)
+                    REFERENCES src (user_id)
                     ON UPDATE CASCADE ON DELETE CASCADE,
                 FOREIGN KEY (part_id)
                     REFERENCES parts (part_id)
@@ -99,8 +99,8 @@ def create_tables():
 
 
 def insert_user(name, surname, email):
-    """ insert a new user into the users table """
-    sql = """INSERT INTO users(name, surname, email)
+    """ insert a new user into the src table """
+    sql = """INSERT INTO src(name, surname, email)
              VALUES(%s, %s, %s) RETURNING user_id;"""
     conn = None
     user_id = None
@@ -129,8 +129,8 @@ def insert_user(name, surname, email):
 
 
 def insert_user_list(user_list):
-    """ insert multiple users into the users table  """
-    sql = "INSERT INTO users(name, surname, email) VALUES(%s, %s, %s)"
+    """ insert multiple src into the src table  """
+    sql = "INSERT INTO src(name, surname, email) VALUES(%s, %s, %s)"
     conn = None
     try:
         # read database configuration

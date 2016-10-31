@@ -3,10 +3,10 @@ Extract:   Read data from CSV file
 Transform: Check and Standarise the format of the data extracted from CSV file
 """
 
-from users.exceptions import *
-from users.formatter import name_format, Email
-from users.config import *
-from users.users_load import *
+from src.exceptions import *
+from src.formatter import name_format, Email
+from src.config import *
+from src.users_load import *
 
 import csv
 import os

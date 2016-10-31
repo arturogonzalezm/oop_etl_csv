@@ -1,7 +1,7 @@
 import unittest
 from nose_parameterized import parameterized
 
-from users.formatter import Email
+from src.formatter import Email
 
 
 class TestEmail(unittest.TestCase):
